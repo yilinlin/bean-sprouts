@@ -9,7 +9,7 @@ tests/**/coverage/
 
 # Editor directories and files
 .idea
-.vscode
+#.vscode # add default setting
 *.suo
 *.ntvs*
 *.njsproj
