@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "test:unit": "jest --clearCache && vue-cli-service test:unit",
-    "test:ci": "npm run lint && npm run test:unit"
+    "test:ci": "npm run lint && npm run test:unit",
+    "inspect:webpack": "vue inspect > output.js"
   },
   "dependencies": {
     "axios": "0.18.1",
