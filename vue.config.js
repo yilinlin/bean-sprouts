@@ -36,6 +36,7 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    // disableHostCheck: true, // forbidden node server check host address
     before: require('./mock/mock-server.js')
   },
   configureWebpack: {
