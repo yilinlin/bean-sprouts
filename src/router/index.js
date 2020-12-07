@@ -37,6 +37,12 @@ export const constantRoutes = [
     hidden: true
   },
 
+  { path: '/ssologin',
+    meta: { title: 'sso登录', noCache: true },
+    component: (resolve) => require(['@/views/login/sso-cookie'], resolve),
+    hidden: true
+  },
+
   {
     path: '/404',
     component: () => import('@/views/404'),

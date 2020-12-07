@@ -2,6 +2,7 @@ import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
+import { ssoErrorHandler, getSSOToken } from '@/utils/sso'
 
 // create an axios instance
 const service = axios.create({
@@ -21,6 +22,12 @@ service.interceptors.request.use(
       // please modify it according to the actual situation
       config.headers['X-Token'] = getToken()
     }
+
+    // add sso token
+    if (getSSOToken()) {
+      config.headers['Authorization'] = getSSOToken()
+    }
+
     return config
   },
   error => {
@@ -73,11 +80,16 @@ service.interceptors.response.use(
   },
   error => {
     console.log('err' + error) // for debug
+
     Message({
       message: error.message,
       type: 'error',
       duration: 5 * 1000
     })
+
+    // do something to handler your error
+    ssoErrorHandler(error)
+
     return Promise.reject(error)
   }
 )

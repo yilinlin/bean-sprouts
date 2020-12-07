@@ -26,7 +26,7 @@ const users = {
 module.exports = [
   // user login
   {
-    url: '/vue-admin-template/user/login',
+    url: '/bean-sprouts/user/login',
     type: 'post',
     response: config => {
       const { username } = config.body
@@ -49,7 +49,7 @@ module.exports = [
 
   // get user info
   {
-    url: '/vue-admin-template/user/info\.*',
+    url: '/bean-sprouts/user/info\.*',
     type: 'get',
     response: config => {
       const { token } = config.query
@@ -72,12 +72,28 @@ module.exports = [
 
   // user logout
   {
-    url: '/vue-admin-template/user/logout',
+    url: '/bean-sprouts/user/logout',
     type: 'post',
     response: _ => {
       return {
         code: 20000,
         data: 'success'
+      }
+    }
+  },
+
+  // 401
+  {
+    url: '/bean-sprouts/user/auth',
+    type: 'post',
+    response: (req, res) => {
+      res.status(401)
+      return {
+        errorMsg: 'SSO Unauthenticated',
+        errorCode: '401',
+        module: {
+          sso_login_url: 'https://www.baidu.com'
+        }
       }
     }
   }
