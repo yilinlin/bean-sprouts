@@ -91,6 +91,7 @@ export default {
     margin: 0;
     height: calc(100% - 120px);
     display: flex;
+    overflow: hidden;
   }
 
   .app-side-bar {
