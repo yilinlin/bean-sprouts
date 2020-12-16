@@ -109,6 +109,100 @@
 
 ### Git协作规范
 
+#### git 分支规范
+
+>  假设协作分支为 dev 分支
+
+**开始开发**
+1. 首先拉取 dev 分支, 然后基于 dev 分支新建自己的分支, 分支命名规则 dev_[featureName]
+
+  ```shell
+  ## 在dev 分支上进行操作
+  git checkout -b dev_example
+  ```
+
+2. 在自己的分支上进行内容更改, 提交
+
+  ```shell
+  git add . -A
+  git commit 'update: your update detail'
+  ```
+
+**推送到远程**
+1. 正常情况下, 可以不限制的推送到自己的远程分支 dev_[featureName]
+
+```shell
+git push dev_example
+// 如果有冲突对于 **自己的分支** 是可以执行 git push -f
+// **dev 分支不可以执行 -f**
+```
+
+**合并到 dev 分支**
+(建议操作 rebase)
+1. 自己的分支如果有未提交的代码, 需要先进行提交
+
+```shell
+git add . -A
+git commit 'update: your update detail'
+```
+
+2. 切换到 dev 分支, 拉取最新代码
+
+```shell
+git checkout dev
+git pull
+```
+
+3. 切换到自己的分支, 执行 git rebase dev
+
+```shell
+git checkout dev_example
+git rebase dev  ## 如果有冲突需要进行解决
+## rebase 后, 可能出现本地远程分支与自己的当前分支不同的情况, 如果以本地分支为准的话可以执行
+git push -f ## 只能在个人分支上操作!!!
+```
+
+4. 切换到 dev 分支, 执行 git merge dev_[featureName]
+
+```shell
+git checkout dev
+git merge dev_example ## 前边如果处理顺利, 此处应该不会出现 merge 的提示
+git push
+```
+
+如果实在不清楚 git 的原理, 或者冲突很多, 可以直接执行 merge 操作, 但是不建议, 会导致 dev 分支分支较多.
+(不推荐操作 merge)
+1. 自己的分支如果有未提交的代码, 需要先进行提交
+
+```shell
+  git add . -A
+  git commit 'update: your update detail'
+```
+
+2. 切换到 dev 分支, 拉取最新代码
+
+```shell
+git checkout dev
+git pull
+```
+
+3. 切换到自己的分支, 执行 git merge dev_[featureName]
+
+```shell
+git checkout dev_example
+git merge dev # 解决冲突
+```
+
+4. 切换到 dev, 进行合并, 推送
+
+```shell
+git checkout dev
+git merge dev_example
+git push
+```
+
+
+#### git 提交规范
 https://segmentfault.com/a/1190000017205604
 
 ### 命名约定
