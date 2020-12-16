@@ -49,7 +49,9 @@ export default {
       return variables
     },
     isCollapse() {
-      return !this.sidebar.opened
+      // 目前默认的菜单都是展开状态
+      // return !this.sidebar.opened
+      return false
     }
   }
 }

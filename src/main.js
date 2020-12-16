@@ -3,12 +3,12 @@ import Vue from 'vue'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 // 如果引用 ccxd-ux 方案, 需要将下边的 ElementUI 引用注释掉
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+// import ElementUI from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
 
 // 如果引用 ccxd-ux 方案, 需要打开下边的注释
-// import ElementUI from 'ccxd-ux'
-// import 'ccxd-ux/lib/theme-ce/index.css'
+import CcxdUx from 'ccxd-ux'
+import 'ccxd-ux/lib/theme-ce/index.css'
 
 // import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 
@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
 // set ElementUI lang to EN
 // Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
-Vue.use(ElementUI)
+Vue.use(CcxdUx)
 
 Vue.config.productionTip = false
 
