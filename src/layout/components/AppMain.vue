@@ -22,12 +22,13 @@ export default {
   /*50 = navbar  */
   /* min-height: calc(100vh - 50px);
   width: 100%; */
+  width: calc(100% - 210px);
   margin-left: 210px;
   position: relative;
   /* overflow: hidden; */
   overflow: auto;
   & > div {
-    min-width: calc(1440px - 210px - 20px);
+    min-width: calc(1024px - 210px - 20px);
   }
 }
 .fixed-header+.app-main {
