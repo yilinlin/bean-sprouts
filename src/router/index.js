@@ -60,6 +60,26 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/demo',
+    meta: { title: 'demo', icon: 'dashboard' },
+    children: [
+      {
+        path: 'demo1',
+        name: 'demo1',
+        component: () => import('@/views/list/index.vue'),
+        meta: { title: 'list1', icon: 'dashboard' }
+      },
+      {
+        path: 'demo2',
+        name: 'demo2',
+        component: () => import('@/views/list/index.vue'),
+        meta: { title: 'list2', icon: 'dashboard' }
+      }
+    ]
+  },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
