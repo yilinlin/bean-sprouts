@@ -79,7 +79,7 @@
         </el-table-column>
 
       </el-table>
-      <el-row :gutter="10" type="flex" justify="end" class="text-right">
+      <el-row :gutter="10" type="flex" justify="end" class="ta-r">
         <el-col :span="24">
           <el-pagination
             background

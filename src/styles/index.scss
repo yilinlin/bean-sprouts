@@ -1,7 +1,7 @@
 @import './variables.scss';
 @import './mixin.scss';
 @import './transition.scss';
-@import './element-ui.scss';
+// @import './element-ui.scss';
 @import './sidebar.scss';
 
 body {
@@ -78,6 +78,78 @@ div:focus {
   width: 100%;
   background-color: #fff;
 }
-.text-right {
-  text-align: right;
+
+
+@each $short, $pos in ('c': 'center', 'r': 'right', 'l': 'left') {
+  .ta-#{$short} {
+    text-align: #{$pos};
+  }
+}
+
+// 间距 如 m10对应 margin:10px pt20: padding-top:20px
+@each $gutter in 0 5 8 10 12 16 24 28 20 32 36 40 48 {
+  @each $pos, $value in ('t': 'top', 'r': 'right', 'b': 'bottom', 'l': 'left') {
+    .m#{$pos}#{$gutter}{
+      margin-#{$value}: #{$gutter}px;
+    }
+    .m#{$gutter}{
+      margin: #{$gutter}px;
+    }
+    .p#{$pos}#{$gutter}{
+      padding-#{$value}: #{$gutter}px;
+    }
+    .p#{$gutter}{
+      padding: #{$gutter}px;
+    }
+  }
+}
+
+// 字体大小 fontSize14对应 font-size: 14px
+@each $ft in 12 14 16 18 24 {
+  .fs#{$ft}{
+    font-size: #{$ft}px;
+  }
+}
+
+// 行间距 lh20对应 line-height: 20px;
+@each $lineheight in 10 12 16 20 24 32 40 {
+  .lh#{$lineheight}{
+    line-height: #{$lineheight}px;
+  }
+}
+
+// 字重大小 fw-bold对应 font-weight: bold
+@each $short, $fw in ('l': 'lighter', 'n': 'normal', 'b': 'bold') {
+  .fw-#{$short}{
+    font-weight: #{$fw};
+  }
+}
+
+//  h20对应 height: 20px
+@each $w in 50 100 {
+  .w#{$w}{
+    width: #{$w}px;
+  }
+}
+
+//  h20对应 height: 20px
+@each $height in 20 24 32 {
+  .h#{$height}{
+    height: #{$height}px;
+  }
+}
+
+//  h20对应 height: 20px
+@each $widthP in 20 25 33 50 100 {
+  .wp#{$widthP}{
+    width: #{$widthP} + '%';
+  }
+}
+
+
+//  opacity65对应 opacity: 0.65
+@each $opacity in 100 65 85 {
+  .op#{$opacity}{
+    opacity: #{$opacity / 100};
+  }
 }
