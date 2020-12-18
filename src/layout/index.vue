@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <el-container>
-      <el-header height="50px"><app-header /></el-header>
+      <el-header height="48px"><app-header /></el-header>
       <el-main>
         <app-side-bar
           v-if="isShowSidebar"
@@ -9,13 +9,14 @@
         />
         <app-main />
       </el-main>
-      <el-footer height="78px"><app-footer /></el-footer>
+      <!-- 暂时取消footer, 目前给的业务系统中都没有 footer -->
+      <!-- <el-footer height="78px"><app-footer /></el-footer> -->
     </el-container>
   </div>
 </template>
 
 <script>
-import { AppMain, AppHeader, AppFooter, AppSideBar } from './components'
+import { AppMain, AppHeader, AppSideBar } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 
@@ -24,7 +25,7 @@ export default {
   components: {
     AppMain,
     AppHeader,
-    AppFooter,
+    // AppFooter,
     AppSideBar
   },
   mixins: [ResizeMixin],
@@ -80,10 +81,15 @@ export default {
     height: 100%;
   }
 
+  .el-header {
+    z-index: 1002;
+    padding: 0;
+  }
   .el-header, .el-footer {
     background-color:$navBg;
-    color: $white;
+    color: $navFontColor;;
     line-height: 50px;
+    box-shadow: 0 3px 8px 0 rgba(41, 48, 64, 0.2);
   }
 
   .el-main {

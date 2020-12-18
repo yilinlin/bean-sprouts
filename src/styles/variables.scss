@@ -21,7 +21,9 @@ $fontSize16 :16px;
 $fontSize14: 14px;
 
 //navbar
-$navBg: #13151E;
+// $navBg: #13151E;
+$navBg: #ffffff;
+$navFontColor:rgba($fontColor, .85);
 
 // sidebar
 // $menuText:#bfcbd9;
@@ -47,4 +49,16 @@ $sideBarWidth: 210px;
   // subMenuBg: $subMenuBg;
   // subMenuHover: $subMenuHover;
   sideBarWidth: $sideBarWidth;
+}
+
+%center_middle_flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%header_font{
+  font-size: 14px;
+  color: #24324C;
+  line-height: 22px;
 }
