@@ -1,17 +1,21 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
+    <div class="dashboard-text">name: {{ username }}</div>
     <div class="dashboard-text">roll your code here ~ by cecloud-fe</div>
 
-    <div style="padding: 10px">
-      <span style="margin-left: -10px; font-weight: bold;">sso support: </span>
-      <p>具体说明可以参考链接 <a href="http://wiki.cestc.cn:8884/pages/viewpage.action?pageId=41958716" target="_blank" style="color: blue; text-decoration: underline">sso 说明</a></p>
-      <p>原理图:</p>
-      <img src="@/assets/demo/sso.png" width="300" alt="" srcset="">
-      <p>一个示例:</p>
-      <div class="dashboard-text"><button @click="checkAuth">check auth(sso) - 401</button></div>
-      <div class="dashboard-text"><button @click="setCookie">setCookie</button></div>
-    </div>
+    <br>
+    <br>
+    <div>一些示例模板</div>
+    <p style="text-decoration: underline">
+      <router-link to="/demo/sso">
+        1. sso
+      </router-link>
+    </p>
+    <p style="text-decoration: underline">
+      <router-link to="/demo/list1">
+        2. table list
+      </router-link>
+    </p>
   </div>
 </template>
 
@@ -22,16 +26,8 @@ export default {
   name: 'Dashboard',
   computed: {
     ...mapGetters([
-      'name'
+      'username'
     ])
-  },
-  methods: {
-    checkAuth() {
-      this.$store.dispatch('user/auth')
-    },
-    setCookie() {
-      this.$router.push({ path: '/ssologin#access_token=123' })
-    }
   }
 }
 </script>

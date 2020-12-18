@@ -76,15 +76,27 @@ export const constantRoutes = [
     meta: { title: 'demo', icon: 'dashboard' },
     children: [
       {
-        path: 'demo1',
+        path: '',
+        name: 'demodefault',
+        component: () => import('@/views/demo/index.vue'),
+        meta: { title: 'demo', icon: 'dashboard' }
+      },
+      {
+        path: 'sso',
+        name: 'sso',
+        component: () => import('@/views/demo/sso/index.vue'),
+        meta: { title: 'sso', icon: 'dashboard' }
+      },
+      {
+        path: 'list1',
         name: 'demo1',
-        component: () => import('@/views/list/index.vue'),
+        component: () => import('@/views/demo/list/index.vue'),
         meta: { title: 'list1', icon: 'dashboard' }
       },
       {
         path: 'demo2',
         name: 'demo2',
-        component: () => import('@/views/list/index.vue'),
+        component: () => import('@/views/demo/list/index.vue'),
         meta: { title: 'list2', icon: 'dashboard' }
       }
     ]
