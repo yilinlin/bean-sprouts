@@ -107,10 +107,9 @@ export default {
         location: '',
         createTime: ''
       },
-      value1: null,
       totalItemNum: 10,
       pageNum: 0,
-      pageSize: 29,
+      pageSize: 33,
       list: []
     }
   },

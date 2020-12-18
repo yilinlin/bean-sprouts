@@ -8,8 +8,10 @@ body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  // 种子工程里  最好不要定义text-rendering，这么定义 在Safari里同等情况下相同的字渲染会变胖，导致设置的宽度不够用 出现换行 by 张婕
+  // text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  background-color: #f5f6f7;
 }
 
 label {
@@ -66,17 +68,18 @@ div:focus {
 
 
 .page-container {
-  padding: 10px;
-  height: 100%;
-  width: 100%;
-  background-color: #ccc;
-}
-
-.page-inner {
-  padding: 10px;
   height: 100%;
   width: 100%;
   background-color: #fff;
+  margin: 0 16px 16px 0;
+  padding: 16px;
+}
+
+.page-inner {
+  // padding: 10px;
+  // height: 100%;
+  // width: 100%;
+  // background-color: #fff;
 }
 
 

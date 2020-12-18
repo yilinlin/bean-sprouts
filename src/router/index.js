@@ -61,9 +61,8 @@ export const constantRoutes = [
     }]
   },
   {
-    path: '/',
+    path: '/demo',
     component: Layout,
-    redirect: '/demo',
     meta: { title: 'demo', icon: 'dashboard' },
     children: [
       {
