@@ -94,10 +94,10 @@ export const constantRoutes = [
         meta: { title: 'list1', icon: 'dashboard' }
       },
       {
-        path: 'demo2',
-        name: 'demo2',
-        component: () => import('@/views/demo/list/index.vue'),
-        meta: { title: 'list2', icon: 'dashboard' }
+        path: 'async',
+        name: 'async',
+        component: () => import('@/views/demo/async/index.vue'),
+        meta: { title: 'async', icon: 'dashboard' }
       }
     ]
   },
