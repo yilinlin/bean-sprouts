@@ -14,7 +14,9 @@
     "test:unit": "jest --clearCache && vue-cli-service test:unit",
     "test:ci": "npm run lint && npm run test:unit",
     "inspect": "vue-cli-service inspect > output.js",
-    "inspect:p": "vue-cli-service --mode production inspect > output.js"
+    "inspect:p": "vue-cli-service --mode production inspect > output.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "axios": "0.18.1",
@@ -30,6 +32,11 @@
     "vuex": "3.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@storybook/vue": "^6.1.14",
     "@vue/cli-plugin-babel": "4.4.4",
     "@vue/cli-plugin-eslint": "4.4.4",
     "@vue/cli-plugin-unit-jest": "4.4.4",
@@ -38,6 +45,7 @@
     "autoprefixer": "9.5.1",
     "babel-eslint": "10.1.0",
     "babel-jest": "23.6.0",
+    "babel-loader": "^8.2.2",
     "babel-plugin-dynamic-import-node": "2.3.3",
     "chalk": "2.4.2",
     "connect": "3.6.6",
