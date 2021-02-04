@@ -1,12 +1,13 @@
 'use strict'
 const path = require('path')
-const defaultSettings = require('./src/settings.js')
+// const defaultSettings = require('./src/settings.js')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'cecloud admin template' // page title
+// const name = defaultSettings.title || 'cecloud admin template' // page title
+const { name } = require('../package.json')
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -24,8 +25,11 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: '/',
-  outputDir: 'dist',
+  // publicPath: '/',
+  // outputDir: 'dist',
+  publicPath: '/subapp/bean-sprouts',
+  transpileDependencies: ['common'],
+  // chainWebpack: config => config.resolve.symlinks(false),
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
@@ -36,7 +40,10 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    // disableHostCheck: true, // forbidden node server check host address
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    },
+    disableHostCheck: true, // forbidden node server check host address
     before: require('./mock/mock-server.js')
   },
   configureWebpack: {
@@ -47,6 +54,12 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
+    },
+    output: {
+      // 把子应用打包成 umd 库格式
+      library: `${name}-[name]`,
+      libraryTarget: 'umd',
+      jsonpFunction: `webpackJsonp_${name}`
     }
   },
   chainWebpack(config) {

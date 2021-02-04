@@ -100,14 +100,15 @@ export const constantRoutes = [
         meta: { title: 'async', icon: 'dashboard' }
       }
     ]
-  },
+  }
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  base: '/subapp/bean-sprouts/',
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
@@ -120,4 +121,6 @@ export function resetRouter() {
   router.matcher = newRouter.matcher // reset router
 }
 
-export default router
+// export default router
+
+export default constantRoutes

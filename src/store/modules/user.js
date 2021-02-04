@@ -1,4 +1,4 @@
-import { login, logout, getInfo, auth } from '@/api/user'
+import { logout, auth } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -30,12 +30,36 @@ const mutations = {
 const actions = {
   // user login
   login({ commit }, userInfo) {
-    const { username, password } = userInfo
+    const { username } = userInfo
+    // return new Promise((resolve, reject) => {
+    //   login({ username: username.trim(), password: password }).then(response => {
+    //     const { data } = response
+    //     commit('SET_TOKEN', data.token)
+    //     setToken(data.token)
+    //     resolve()
+    //   }).catch(error => {
+    //     reject(error)
+    //   })
+    // })
+
+    // fake data
+    const tokens = {
+      admin: {
+        token: 'admin-token'
+      },
+      editor: {
+        token: 'editor-token'
+      }
+    }
+
+    // 不进行登录的请求， 需要实际的业务在此处进行复写
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(response => {
-        const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
+      // login({ username: username.trim(), password: password })
+      new Promise(rel => rel(tokens)).then(response => {
+        // const { data } = response
+        const { token } = response[username.trim()]
+        commit('SET_TOKEN', token)
+        setToken(token)
         resolve()
       }).catch(error => {
         reject(error)
@@ -46,9 +70,24 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
-        const { data } = response
+      // fake data
+      const users = {
+        'admin-token': {
+          roles: ['admin'],
+          introduction: 'I am a super administrator',
+          avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+          name: 'Super Admin'
+        },
+        'editor-token': {
+          roles: ['editor'],
+          introduction: 'I am an editor',
+          avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+          name: 'Normal Editor'
+        }
+      }
 
+      // getInfo(state.token).
+      new Promise(rel => rel(users)).then(data => {
         if (!data) {
           return reject('Verification failed, please Login again.')
         }
