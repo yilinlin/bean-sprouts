@@ -55,6 +55,12 @@ function render(props = {}) {
     routes
   })
 
+  // onGlobalStateChange && onGlobalStateChange((state, prev) => {
+  //   // state: 变更后的状态; prev 变更前的状态
+  //   console.log('in bean, state is : ', state, prev)
+  // })
+  // setGlobalState && setGlobalState({ sub: 'bean' })
+
   permissionRouter(router)
 
   console.log('container is ', container)
@@ -86,6 +92,17 @@ export async function mount(props) {
   console.log('[vue] props from main framework', props)
 
   // commonStore.globalRegister(store, props)
+
+  props.onGlobalStateChange((state, prev) => {
+    // state: 变更后的状态; prev 变更前的状态
+    console.log('in sub, state is : ', state, prev)
+  })
+  props.setGlobalState({
+    ignore: 'sub',
+    user: {
+      name: 'sub'
+    }
+  })
 
   render(props)
 }
