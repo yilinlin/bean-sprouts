@@ -22,7 +22,7 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 // import { registerMicroApps, start, setDefaultMountApp } from 'qiankun'
-import { registerMicroApps, start } from 'qiankun'
+import { registerMicroApps, start, initGlobalState } from 'qiankun'
 import microApps from './micro-app'
 
 /**
@@ -88,5 +88,19 @@ registerMicroApps(apps, {
     }
   ]
 })
+
+const { onGlobalStateChange, setGlobalState } = initGlobalState({
+  mainLib: 'qiankun'
+})
+
+onGlobalStateChange((value, prev) => console.log('[onGlobalStateChange - master]:', value, prev))
+
+setGlobalState({
+  ignore: 'main',
+  user: {
+    name: 'main'
+  }
+})
+
 // setDefaultMountApp('/sub-vue')
 start()
